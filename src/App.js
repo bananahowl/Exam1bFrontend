@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import facade from "./apiFacade";
+import MainPage from "./Main";
+import LoggedIn from "./LoggedIn";
 class LogIn extends Component {
  constructor(props) {
    super(props);
@@ -20,30 +22,12 @@ class LogIn extends Component {
          <input placeholder="User Name" id="username" />
          <input placeholder="Password" id="password" />
          <button>Login</button>
-       </form>
+         </form>
      </div>
    )
  }
 }
-class LoggedIn extends Component {
- constructor(props) {
-   super(props);
-   this.state= {dataFromServer: "Fetching!!"};
- }
- componentDidMount(){
-  //facade.fetchData().then(res=> this.setState({dataFromServer: res}));
-  //ERROR lies in need of .msg on the bottom to indicate the element you want from res.
-  facade.fetchData().then(res => this.setState({ dataFromServer: res.msg }));
- }
- render() {
-   return (
-     <div>
-       <h2>Data Received from server</h2>
-       <h3>{this.state.dataFromServer}</h3>
-     </div>
-   )
- }
-}
+
 class App extends Component {
  constructor(props) {
    super(props);
@@ -62,8 +46,10 @@ class App extends Component {
      <div> 
        {!this.state.loggedIn ? (<LogIn login={this.login} />) :
          ( <div>
+           <button onClick={this.logout}>Logout</button>
              <LoggedIn/> 
-             <button onClick={this.logout}>Logout</button>
+             
+             
            </div>)}
      </div>
    )
