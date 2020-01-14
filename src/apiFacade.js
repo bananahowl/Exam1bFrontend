@@ -1,6 +1,6 @@
 
-const URL = "http://localhost:8080/securitystarter";
-//https://pencilash.com/securitystarter 
+//const URL = "http://localhost:8080/securitystarter";
+const URL = "https://pencilash.com/securitystarter"; 
 function handleHttpErrors(res) {
  if (!res.ok) {
    return Promise.reject({ status: res.status, fullError: res.json() })
